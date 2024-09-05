@@ -35,7 +35,7 @@ test:
     - trio_websocket
   commands:
     - pip check
-    - cd src && pytest -vv --cov trio_websocket --cov-report term-missing:skip-covered --no-cov-on-fail --cov-fail-under 95
+    - pytest -vv --cov trio_websocket --cov-report term-missing:skip-covered --no-cov-on-fail --cov-fail-under 95
   requires:
     - attrs >=19.2.0
     - pip
