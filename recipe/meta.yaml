@@ -1,4 +1,4 @@
-{% set version = "0.9.2" %}
+{% set version = "0.11.1" %}
 
 package:
   name: trio-websocket
@@ -7,25 +7,25 @@ package:
 source:
   - folder: dist
     url: https://pypi.io/packages/source/t/trio-websocket/trio-websocket-{{ version }}.tar.gz
-    sha256: a3d34de8fac26023eee701ed1e7bf4da9a8326b61a62934ec9e53b64970fd8fe
+    sha256: 18c11793647703c158b1f6e62de638acada927344d534e3c7628eedcb746839f
   - folder: src
     url: https://github.com/HyperionGray/trio-websocket/archive/refs/tags/{{ version }}.tar.gz
-    sha256: acc72db00e89e4594caac269aabebeccbd7b2d87d4dd06acba7adf4344cd8a42
+    sha256: 31b33561be82ea8f748ca2d8adaf3c45a2003c1a5e1550d7cf44e5a884564bce
 
 build:
   number: 0
-  noarch: python
-  script: cd dist && {{ PYTHON }} -m pip install . -vv
+  skip: True  # [py<38]
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed -vvv
 
 requirements:
   host:
     - pip
-    - python >=3.5
+    - python
   run:
-    - async_generator >=1.10
-    - python >=3.5
+    - python
     - trio >=0.11
     - wsproto >=0.14
+    - exceptiongroup # [py<311]
 
 test:
   source_files:
@@ -40,14 +40,16 @@ test:
     - attrs >=19.2.0
     - pip
     - pytest >=4.6
-    - pytest-cov
-    - pytest-trio >=0.5.0
     - trustme
 
 about:
   home: https://github.com/HyperionGray/trio-websocket
   summary: WebSocket library for Trio
   license: MIT
+  description: |
+    trio-websocket is a WebSocket library for Trio. It is a port of the
+    wsproto library to Trio, and is designed to be used with the Trio async
+    I/O library.
   # TODO: revisit if/after merge of https://github.com/HyperionGray/trio-websocket/pull/168
   license_file: src/LICENSE
   doc_url: https://trio-websocket.readthedocs.io
