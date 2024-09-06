@@ -21,6 +21,7 @@ requirements:
   host:
     - pip
     - python
+    - wheel
   run:
     - python
     - trio >=0.11
@@ -35,11 +36,14 @@ test:
     - trio_websocket
   commands:
     - pip check
+    - pytest -vv --cov trio_websocket --cov-report term-missing:skip-covered --no-cov-on-fail --cov-fail-under 95
   requires:
     - attrs >=19.2.0
     - pip
     - pytest >=4.6
     - trustme
+    - pytest-cov
+    # - pytest-trio >=0.5.0
 
 about:
   home: https://github.com/HyperionGray/trio-websocket
@@ -51,7 +55,9 @@ about:
     I/O library.
   # TODO: revisit if/after merge of https://github.com/HyperionGray/trio-websocket/pull/168
   license_file: LICENSE
+  license_family: MIT
   doc_url: https://trio-websocket.readthedocs.io
+  dev_url: https://github.com/HyperionGray/trio-websocket
 
 extra:
   recipe-maintainers:
