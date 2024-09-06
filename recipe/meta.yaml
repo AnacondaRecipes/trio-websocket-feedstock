@@ -42,7 +42,7 @@ test:
     - pip
     - pytest >=4.6
     - trustme
-    - pytest-cov
+    # - pytest-cov
     # - pytest-trio >=0.5.0
 
 about:
