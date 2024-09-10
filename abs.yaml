@@ -1,2 +1,2 @@
-channel:
+channels:
   - https://staging.continuum.io/prefect/fs/pytest-trio-feedstock/pr1/8270277
