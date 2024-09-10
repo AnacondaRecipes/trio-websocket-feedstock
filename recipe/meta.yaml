@@ -42,8 +42,8 @@ test:
     - pip
     - pytest >=4.6
     - trustme
-    # - pytest-cov
-    # - pytest-trio >=0.5.0
+    - pytest-cov
+    - pytest-trio >=0.5.0
 
 about:
   home: https://github.com/HyperionGray/trio-websocket
