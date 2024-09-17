@@ -33,6 +33,7 @@ test:
   commands:
     - pip check
     - pytest -vv  # [not arm64]
+    ## Skipped tests on osx-arm64 due to our CI limitations with networking libraries
   requires:
     - attrs >=19.2.0
     - pip
