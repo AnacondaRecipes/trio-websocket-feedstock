@@ -34,7 +34,7 @@ test:
     - trio_websocket
   commands:
     - pip check
-    - pytest -vv  # [not arm64 and win]
+    - pytest -vv  # [not (arm64 or win)]
     ## Skipped tests on osx-arm64 and win due to our CI limitations with networking libraries
   requires:
     - attrs >=19.2.0
