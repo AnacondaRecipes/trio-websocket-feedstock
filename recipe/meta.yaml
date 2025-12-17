@@ -6,12 +6,12 @@ package:
   version: {{ version }}
 
 source:
-    url: https://github.com/HyperionGray/{{ name }}/archive/refs/tags/{{ version }}.tar.gz
-    sha256: 4784c823dbe98e4dc3909b560857c64f5786bca01d00d16f2e3ae37a32a54174
+  url: https://github.com/HyperionGray/{{ name }}/archive/refs/tags/{{ version }}.tar.gz
+  sha256: 4784c823dbe98e4dc3909b560857c64f5786bca01d00d16f2e3ae37a32a54174
 
 build:
-  number: 0
-  skip: True  # [py<38]
+  number: 1
+  skip: true  # [py<38]
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed -vvv
 
 requirements:
@@ -23,7 +23,7 @@ requirements:
     - python
     - trio >=0.11
     - wsproto >=0.14
-    - exceptiongroup # [py<311]
+    - exceptiongroup  # [py<311]
     - outcome >=1.2.0
 
 test:
@@ -35,7 +35,7 @@ test:
   commands:
     - pip check
     - pytest -vv  # [not (arm64 or win)]
-    ## Skipped tests on osx-arm64 and win due to our CI limitations with networking libraries
+  ## Skipped tests on osx-arm64 and win due to our CI limitations with networking libraries
   requires:
     - attrs >=19.2.0
     - pip
